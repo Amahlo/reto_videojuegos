@@ -3,20 +3,24 @@ SELECT id_producto, nombre, marca
 FROM producto
 WHERE marca = 'Sony';
 
+
 --💰2. ¿Cuáles productos cuestan más de $1.000.000?
 SELECT nombre, marca, precio
 FROM producto
 WHERE precio > 1000000;
+
 
 --📦3. ¿Cuáles productos tienen menos de 10 unidades disponibles?
 SELECT nombre, marca, stock
 FROM producto
 WHERE stock < 10;
 
+
 --📦4. ¿Cuáles productos tienen menos de 10 unidades disponibles?
 SELECT metodo_pago, COUNT(*) AS cantidad_ventas
 FROM venta
 GROUP BY metodo_pago;
+
 
 --🤑5. ¿Cuál es el producto más costoso?
 SELECT nombre, marca, precio
@@ -24,15 +28,18 @@ FROM producto
 ORDER BY precio DESC
 LIMIT 1;
 
+
 --🪙6. ¿Cuál es el producto más económico?
 SELECT nombre, marca, precio
 FROM producto
 ORDER BY precio ASC
 LIMIT 1;
 
+
 -- 📊7. ¿Cuál es el precio promedio de los productos?
 SELECT AVG(precio) AS precio_promedio
 FROM producto;
+
 
 -- 👤8. ¿Qué cliente realizó cada venta?
 SELECT
@@ -47,6 +54,7 @@ FROM venta v
 INNER JOIN cliente c
     ON v.id_cliente = c.id_cliente;
 
+
 -- 🎮9. ¿Qué producto aparece en cada detalle de venta?
 SELECT
     vp.id_producto AS id_producto,
@@ -57,6 +65,7 @@ FROM venta_producto vp
 
 INNER JOIN producto p
     ON vp.id_producto = p.id_producto;
+    
 
 -- 🔥10. Muestre cliente, producto, categoría, cantidad y subtotal de cada venta.
 SELECT
